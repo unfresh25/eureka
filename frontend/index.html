@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eureka — Asistente Legal</title>
+    <meta name="description"
+        content="Asistente legal colombiano con inteligencia artificial. Consulte sus dudas legales y genere documentos jurídicos." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles/main.css" />
+</head>
+
+<body>
+    <div class="app-shell">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand">
+                    <div class="brand-text">
+                        <span class="brand-name">Eureka</span>
+                        <span class="brand-tagline">Asistente Legal</span>
+                    </div>
+                </div>
+                <button class="btn-new-chat" id="btnNewChat" title="Nueva conversación">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="sidebar-section-label">Conversaciones</div>
+            <div class="conversations-list" id="conversationsList">
+                <div class="empty-conversations">
+                    <span>No hay conversaciones aún</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main chat area -->
+        <main class="chat-area">
+            <!-- Top bar -->
+            <header class="chat-header">
+                <button class="btn-icon sidebar-toggle" id="sidebarToggle" title="Menú">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                </button>
+                <div class="chat-header-title" id="chatHeaderTitle">Nueva conversación</div>
+                <div class="status-dot" id="statusDot" title="Conectado"></div>
+            </header>
+
+            <!-- Messages -->
+            <div class="messages-container" id="messagesContainer">
+                <!-- Welcome screen -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-icon">⚖️</div>
+                    <h1 class="welcome-title">Asistente Legal Eureka</h1>
+                    <p class="welcome-subtitle">Consulte sus dudas legales o solicite la generación de documentos
+                        jurídicos personalizados.</p>
+                    <div class="quick-actions">
+                        <button class="quick-action-btn"
+                            data-prompt="¿Qué es una acción de tutela y cuándo puedo usarla?">
+                            <span>¿Qué es una tutela?</span>
+                        </button>
+                        <button class="quick-action-btn"
+                            data-prompt="Necesito una tutela porque mi EPS me negó un medicamento recetado por mi médico.">
+                            <span>Generar tutela por salud</span>
+                        </button>
+                        <button class="quick-action-btn"
+                            data-prompt="¿Cuáles son mis derechos como trabajador en Colombia?">
+                            <span class="qa-icon">⚖️</span>
+                            <span>Derechos laborales</span>
+                        </button>
+                        <button class="quick-action-btn"
+                            data-prompt="Necesito un derecho de petición para solicitar información a una entidad pública.">
+                            <span class="qa-icon">✍️</span>
+                            <span>Derecho de petición</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thinking indicator -->
+            <div class="thinking-bar" id="thinkingBar" style="display:none;">
+                <div class="thinking-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <span class="thinking-text" id="thinkingText">Analizando...</span>
+            </div>
+
+            <!-- Input area -->
+            <div class="input-area">
+                <div class="input-wrapper">
+                    <textarea id="messageInput" class="message-input"
+                        placeholder="Escriba su consulta legal o solicite un documento..." rows="1"
+                        maxlength="4000"></textarea>
+                    <button class="send-btn" id="sendBtn" disabled title="Enviar">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <span class="char-count" id="charCount">0 / 4000</span>
+                    <span class="input-hint">Enter para enviar · Shift+Enter para salto de línea</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
